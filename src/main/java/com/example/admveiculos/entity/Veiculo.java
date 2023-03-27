@@ -1,13 +1,16 @@
-package entity;
-import javax.persistence.*;
+package com.example.admveiculos.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "employee")
-public class VeiculoEntity {
-
+@Table(name = "admVeiculos")
+public class Veiculo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "nomeVeiculo")

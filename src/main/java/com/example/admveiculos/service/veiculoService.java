@@ -1,9 +1,8 @@
-package service;
+package com.example.admveiculos.service;
 
-import entity.VeiculoEntity;
+import com.example.admveiculos.entity.Veiculo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.veiculoRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -12,22 +11,22 @@ import java.util.List;
 public class veiculoService {
 
     @Autowired
-    private static veiculoRepository veiculoRepository;
-    public List<VeiculoEntity> listar() {
+    private static com.example.admveiculos.repository.veiculoRepository veiculoRepository;
+    public List<Veiculo> listar() {
         return veiculoRepository.findAll();
     }
 
-    public static VeiculoEntity buscarPorId(Long id) {
+    public static Veiculo buscarPorId(Long id) {
         return veiculoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("veiculo não encontrado"));
     }
 
-    public static VeiculoEntity criar(VeiculoEntity veiculo) {
+    public static Veiculo criar(Veiculo veiculo) {
         return veiculoRepository.save(veiculo);
     }
 
-    public static VeiculoEntity atualizar(Long id, VeiculoEntity veiculoAtualizado) {
-        VeiculoEntity veiculoExistente = veiculoRepository.findById(id)
+    public static Veiculo atualizar(Long id, Veiculo veiculoAtualizado) {
+        Veiculo veiculoExistente = veiculoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("veiculo não encontrado"));
         veiculoExistente.setNomeVeiculo(veiculoAtualizado.getNomeVeiculo());
         return veiculoRepository.save(veiculoExistente);
